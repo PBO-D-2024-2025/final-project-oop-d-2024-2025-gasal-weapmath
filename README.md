@@ -104,18 +104,6 @@ Interface implementation untuk system handlers
 
 
 * **Design Pattern yang Digunakan**: 
-1. Singleton Pattern
-    GameManager class
-    Audio Manager
-
-2. Observer Pattern
-
-    Event system untuk achievement
-
-3. State Pattern
-
-    Management game state
-    Character selection state
 
 * **Code Snippet**: 
 
@@ -1010,10 +998,6 @@ public class ShopScript : MonoBehaviour, IDetailedStoreListener
     5. DIP: Dengan antarmuka, penyimpanan bisa diganti tanpa ubah kode utama.
 
 * **Design Pattern yang Digunakan**:
-    1. Singleton: Hanya ada satu SaveLoader yang diakses di seluruh game.
-    2. Observer: UI koin otomatis diperbarui saat data berubah.
-    3. Command: Menyimpan perintah seperti tambah koin, reset serangan.
-    4. Strategy: Menyesuaikan cara penanganan serangan sesuai kondisi.
 
 * **Code Snippet**: 
 
