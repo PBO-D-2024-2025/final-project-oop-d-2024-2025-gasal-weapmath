@@ -6,7 +6,7 @@
 * **Anggota Kelompok**:
     1. Alvin Zanua Putra - 5025231064]
     2. [Adrian Aziz Santoso - 5025221229]
-    3. [Nama - NRP]
+    3. [Muhammad Farrel Fathin Wibowo - 5025231233]
     4. [Nama - NRP]
 * **Tech Stack**: [Bahasa Pemrograman C#, Framework Unity API, Tools yang digunakan adalah Unity Editor, Visual Studio Code Editor, Assets Store Itch Io]
 
