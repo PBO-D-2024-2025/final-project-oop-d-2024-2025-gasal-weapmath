@@ -105,14 +105,12 @@ Interface implementation untuk system handlers
 
 * **Design Pattern yang Digunakan**: 
 1. Singleton Pattern
-
     GameManager class
     Audio Manager
 
 2. Observer Pattern
 
     Event system untuk achievement
-    Update notifikasi untuk UI
 
 3. State Pattern
 
