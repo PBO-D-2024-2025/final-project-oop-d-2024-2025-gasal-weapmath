@@ -1242,7 +1242,7 @@ B. Prinsip SOLID yang diterapkan :
 
 **D. Code Snippet**:
 
-### +> State Management :
+# +> State Management :
 
 ## **1. SaveLoader.cs** :
 
@@ -1298,7 +1298,7 @@ public class SaveLoader : MonoBehaviour
 `5. SaveMatchHistory() : Menyimpan hasil pertandingan terakhir ke PlayerPrefs.`
 
 
-### +> 2. Error Handling :
+# +> Error Handling :
 
 ## **2. Error Handling.cs** :
 
