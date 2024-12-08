@@ -1,6 +1,6 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadlinereadmebutton22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/4ZAJL3PP)
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/4ZAJL3PP)
 
-<h1> Laporan Akhir Final Project OOP D </h1>
+# Laporan Akhir Final Project OOP D
 
 ## 1. Informasi Umum
 
