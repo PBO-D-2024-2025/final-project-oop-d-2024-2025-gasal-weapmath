@@ -33,7 +33,7 @@ Game bertemakan perang adat yang menggabungkan unsur matematika dan budaya Indon
 
 - **Single/Multi Player** :
 
-  - Single Player: Melawan AI komputer
+  - Single Player: Melawan Bot komputer yang di program sendiri
   - Multi Player: Pertarungan 1 vs 1 secara online
 
 ## 2.2 Fitur Utama
@@ -89,7 +89,7 @@ Game bertemakan perang adat yang menggabungkan unsur matematika dan budaya Indon
 
 1.  **Encapsulation**
 
-        - Penggunaan access modifiers (public, private, protected)
+        - useran access modifiers (public, private, protected)
         - Data hiding untuk variabel sensitif
         - Getter dan setter methods untuk kontrol akses
 
@@ -119,7 +119,7 @@ Game bertemakan perang adat yang menggabungkan unsur matematika dan budaya Indon
 
 3.  **Interface Segregation**
 
-        - Penggunaan interface IDetailedStoreListener
+        - User interface IDetailedStoreListener
         - Pemisahan concern untuk network functionality
 
 ## D. **Code Snippet**:
@@ -731,6 +731,92 @@ public class SaveLoader : MonoBehaviour
 }
 ```
 
+### Penjelasan Code :
+
+`Class: SaveLoader : Untuk menyimpan, memuat, dan mengelola data pemain, seperti karakter, rumah, dan item yang dimiliki saat ini. `
+
+`1. Start() : Fungsi dipanggil ketika ada objek inisialisasi yaitu Memuat data yang tersimpan (PlayerPrefs) seperti indeks karakter dan rumah, Memastikan indeks valid, mastikan indexnya valid, Memuat status kepemilikan item (loadOwnedCharacters()), Menerapkan perubahan UI (applyChange()), Memperbarui tampilan data pemain (kelas, gender, koin)`
+
+`2. Update() : Untuk Mengubah tampilan rumah atau karakter tergantung pada tab yang aktif, nampilin status seleksi dengan checkmark (selTextEnabler()).`
+
+`3. updateCoinAmount() : Fungsi publik untuk memperbarui jumlah koin yang ditampilkan, Data diambil dari PlayerPrefs dan diperbarui ke UI (coinAmountText).`
+
+`4. buyItem() : ungsi publik untuk membeli karakter atau rumah, logikanya Mengecek apakah tab aktif adalah karakter atau rumah. Cek apa koin yang dimiliki cukup. Jika cukup, item ditandai sebagai dimiliki (PlayerPrefs.SetInt) dan koin diperbarui. Refresh status kepemilikan item (loadOwnedCharacters()).`
+
+`5. loadOwnedCharacters() : Fungsi private untuk memuat status kepemilikan karakter dan rumah, Data diambil dari PlayerPrefs dan disimpan dalam variabel boolean. Jika item dimiliki atau versi pro, variabel boolean diubah menjadi true.`
+
+`6. idAssign() : Fungsi private untuk menetapkan ID pemain, Data diambil dari PlayerPrefs. Jika ID belum ada, ID baru dibuat dan disimpan.`
+
+`7. setID() : Fungsi private untuk membuat ID baru, ID terdiri dari 12 karakter acak dari variabel glyphs. ID disimpan di PlayerPrefs.`
+
+`8. changeGrade() : Fungsi publik untuk mengubah kelas pemain, Data disimpan di PlayerPrefs dan diperbarui ke UI (gradeText).`
+
+`9. changeGender() : Fungsi publik untuk mengubah gender pemain, ungsi publik untuk mengubah dan menyimpan gender pemain. Data gender disimpan di PlayerPrefs dan diperbarui ke UI (genderText).`
+
+`10. next() : next() Fungsi publik untuk mengubah indeks karakter/rumah ke item berikutnya pake index modulo 9 karena ada 3 rumah dan 9 karakter. `
+
+`11. prev() : Fungsi publik untuk mengubah indeks karakter/rumah ke item sebelumnya. `
+
+`12. changeTab() : Fungsi publik untuk mengubah tab antara karakter dan rumah. `
+
+`13. applyChange() : Fungsi publik untuk menerapkan perubahan karakter atau rumah, memeriksa indeks karakter dan rumah yang dipilih dan menampilkan karakter atau rumah. `
+
+`14. disableHouse() : Fungsi privat untuk menonaktifkan semua rumah (menyembunyikannya). `
+
+`15. disableChar() : Fungsi privat untuk menonaktifkan karakter (menyembunyikannya karena tidak perlu diketahui user). `
+
+`16. selTextEnabler() : Fungsi privat untuk menampilkan status seleksi dengan checkmark, menampilkan checkmark jika item dipilih. `
+
+`17. changeHouse() : Fungsi privat untuk mengubah tampilan rumah, menampilkan rumah yang dipilih dan harga rumah. `
+
+`18. changeChar() : Fungsi privat untuk mengubah tampilan karakter, menampilkan karakter yang dipilih dan harga karakter. `
+
+### Rangkuman :
+
+A. Prinsip OOP yang diterapkan:
+
+1. Encapsulation
+
+   - Fungsi Privat:
+     - loadOwnedCharacters(): Mengelola status kepemilikan item tanpa langsung mengekspos data internal.
+     - disableHouse() dan disableChar(): Menyembunyikan logika untuk menonaktifkan objek dari luar class.
+     - Keuntungan: Detail implementasi tersembunyi, memudahkan pemeliharaan kode.
+   - Fungsi Publik:
+     - buyItem(): Hanya mengekspos cara membeli item tanpa menunjukkan bagaimana item diatur di PlayerPrefs.
+
+2. Inheritance
+   Pada class SaveLoader, inheritance tidak diterapkan secara eksplisit karena class ini berdiri sendiri. Namun, SaveLoader mewarisi metode dasar dari MonoBehaviour (class bawaan Unity), seperti Start() dan Update().
+   Contohnya : MonoBehaviour.Start() di-overriding untuk memuat data awal.
+
+3. Polymorphism
+   Dalam SaveLoader, ini terlihat pada cara fungsi menangani objek berbeda berdasarkan konteks, seperti tab karakter atau rumah. Contohnya :
+
+   - buyItem(): - Menggunakan logika polymorphism untuk menentukan apakah pembelian berlaku untuk karakter atau rumah berdasarkan tab yang aktif. - Menggunakan kondisi if (tabCharacter) dan else untuk menangani dua jenis objek.
+   - Dynamic Method Calls: - Fungsi seperti changeTab() dan applyChange() memanggil fungsi berbeda tergantung konteks (karakter atau rumah).
+
+4. Abstraction
+   SaveLoader menyembunyikan detail implementasi seperti cara menyimpan data di PlayerPrefs, Fungsi-fungsi publik hanya mengekspos cara mengakses data tanpa menunjukkan detailnya. Contohnya :
+   - applyChange():
+     Menyembunyikan detail bagaimana indeks diubah dan hanya memberikan akses untuk memperbarui tampilan.
+   - selTextEnabler():
+     Abstraksi logika menampilkan atau menyembunyikan status seleksi.
+
+B. Prinsip SOLID yang diterapkan :
+
+1. Single Responsibility Principle (SRP)
+   yaitu setiap class atau fungsi harus memiliki satu tanggung jawab spesifik.
+   Contohnya di bagian : - buyItem():
+   Hanya menangani logika pembelian item. - updateCoinAmount():
+   Hanya menangani pembaruan jumlah koin. - Fungsi-fungsi disableHouse() dan disableChar():
+   Cuma Fokus pada penonaktifkan semua rumah atau karakter.
+   Kekurangan:
+   Class SaveLoader melanggar SRP karena menangani terlalu banyak tanggung jawab sekaligus: Pengelolaan data karakter dan rumah, Interaksi UI, Pengelolaan data pemain di PlayerPrefs.
+
+2. Open/Closed Principle (OCP)
+   Class harus terbuka untuk ekstensibilitas, tetapi tertutup untuk modifikasi langsung.
+   Contoh di bagian: - PlayerPrefs:
+   Data disimpan di PlayerPrefs, yang mungkin perubahan eksternal tanpa memodifikasi logika intinya.
+
 ## **2. UsernameChange.cs** :
 
 ```bash
@@ -763,6 +849,43 @@ public class UsernameChange : MonoBehaviour
     }
 }
 ```
+
+### Penjelasan Code :
+
+`Untuk Field(Vairiablenya) : `<br>
+
+`[SerializeField] TMP_InputField usernameInput Merupakan referensi ke input field tempat user memasukkan nama user baru.` <br>
+`[SerializeField] TextMeshProUGUI username Menyimpan referensi ke elemen teks di UI yang menampilkan nama user saat ini.`<br>
+`[SerializeField] TextMeshProUGUI usernameProfile Sama seperti username, tetapi digunakan untuk menampilkan nama user di bagian profil.`
+
+`1. Start() : Fungsi untuk memuat nama user yang tersimpan dari PlayerPrefs, Jika nama user ada, nama user ditampilkan di UI.`<br>
+`2. changeUsername() : Fungsi publik untuk mengubah nama user, Menyimpan nama user baru ke PlayerPrefs, Memperbarui nama user di UI.`
+
+### Rangkuman :
+
+A. Prinsip OOP yang diterapkan:
+
+1. Encapsulation
+
+- [SerializeField]: Field usernameInput, username, dan  
+  usernameProfile dibuat private dan hanya dapat diatur melalui editor Unity. Ini menjaga agar properti tersebut tidak dapat diakses langsung oleh class lain.
+  - Fungsi changeUsername() untuk memperbarui nama user, hanya dapat diakses dari luar class dan tidak memerlukan akses langsung ke variabel usernameInput.
+
+2. Inheritance
+   Inheritance tidak diterapkan secara eksplisit pada class ini. Tapi, class ini ada warisanya dari MonoBehaviour. Yaitu buat memungkinkan UsernameChange untuk memanfaatkan fungsi bawaan Unity seperti Start().
+3. Abstraction
+   Abstraction diterapkan dalam fungsi: changeUsername():
+   Ada interface sederhana untuk mengganti username tanpa menunjukkan logika pengelolaan data di dalamnya, tapi ini masih terikat langsung dengan PlayerPrefs.
+
+B. Prinsip SOLID yang diterapkan :
+
+1. Single Responsibility Principle (SRP)
+
+   - Mengelola perubahan nama user.
+   - Menyimpan dan memuat nama user dari PlayerPrefs.
+
+2. Dependency Inversion Principle (DIP)
+   Pelanggaran: Class ini bergantung langsung pada PlayerPrefs, yang membuatnya sulit untuk diuji atau diubah penyimpanan datanya.
 
 ## **3. AudioSettings.cs** :
 
@@ -843,6 +966,36 @@ public class AudioSettings : MonoBehaviour
 }
 ```
 
+### Penjelasan Code :
+
+`1. Saat aplikasi dimulai:`<br>
+`- Start() memuat pengaturan musik dan efek suara dari PlayerPrefs.`
+`- Toggle UI/tombolnya diperbarui agar sesuai dengan pengaturan.`
+
+`2. Saat pengguna mengubah toggle musik atau efek suara:`<br>
+`- Fungsi changeMsc() atau changeSfx() dipanggil melalui event handler toggle.`
+`- Status pengaturan diperbarui di PlayerPrefs.`
+
+`3. Saat aplikasi berjalan:`<br>
+`- Update() secara dinamis menyesuaikan status AudioSource berdasarkan pengaturan yang dipilih pengguna.`
+
+### Rangkuman :
+
+A. Prinsip OOP yang diterapkan:
+
+1. Encapsulation
+   - Field seperti msc dan mscT diberi atribut [SerializeField], sehingga hanya dapat diakses melalui editor Unity atau metode di dalam class.
+   - Buat membatasi akses langsung dan melindungi integritas datanya.
+2. Abstraction
+   - Seperti penyimpanan pengaturan di PlayerPrefs disembunyikan dari pengguna class.
+   - Namun, abstraksi dapat ditingkatkan dengan memisahkan logika penyimpanan dari class ini.
+
+B. Prinsip SOLID yang diterapkan :
+
+1. Single Responsibility Principle (SRP)
+   - Class ini memiliki satu tanggung jawab: mengelola pengaturan audio.
+   - Semua fungsi berfokus pada pengaturan musik dan efek suara, tanpa mencampur tugas lainnya.
+
 ## 4. **Player Controller.cs** :
 
 ```bash
@@ -871,6 +1024,38 @@ public class PlayerChanger : NetworkBehaviour
     }
 }
 ```
+
+### Penjelasan Code :
+
+`1. Start() : Fungsi ini dipanggil ketika script pertama kali dijalankan, Mengambil referensi ke class GameManager menggunakan FindObjectOfType(), Memeriksa apakah instance saat ini adalah server atau client menggunakan IsServer dan IsClient dari Unity Netcode:` 
+
+- `Jika server:`
+`Memanggil changePlayer(1) untuk mengatur pemain ke tipe "1", Memulai pertandingan dengan startMatch().` 
+
+- `Jika client:`
+`Memanggil changePlayer(2) untuk mengatur pemain ke tipe "2".`
+
+`2. Memanggil waitingPlayer() untuk melakukan pengaturan atau tindakan saat menunggu pemain lain.`
+
+### Rangkuman :
+
+A. Prinsip OOP yang diterapkan:
+
+1. Encapsulation
+   Tidak ada variabel yang diberi visibilitas terbatas (private atau protected). Variabel gm harus dienkapsulasi untuk melindungi integritasnya.
+2. Abstraction
+   Interaksi dengan GameManager dilakukan melalui metode seperti changePlayer() dan startMatch(). Ini menyembunyikan detail implementasi.
+3. Inheritance dan Polymorphism
+   Pewarisan dari NetworkBehaviour memungkinkan script untuk berfungsi dalam ekosistem Unity Netcode.
+
+B. Prinsip SOLID yang diterapkan :
+
+1. Single Responsibility Principle (SRP)
+   Class ini memiliki tanggung jawab tunggal untuk mengatur perubahan pemain di dalam game.
+2. Open/Closed Principle (OCP)
+   Class tidak terbuka untuk ekspansi tanpa memodifikasi kode, karena fungsi seperti changePlayer() langsung dikodekan ke tipe pemain.
+3. Dependency Inversion Principle (DIP)
+   Class secara langsung bergantung pada GameManager. Menggunakan abstraksi seperti interface dapat mengurangi ketergantungan langsung.
 
 ## 5. **ShopScripts.cs** :
 
@@ -993,28 +1178,67 @@ public class ShopScript : MonoBehaviour, IDetailedStoreListener
 }
 ```
 
+### Penjelasan Code :
+
+`1. Start() : Memanggil SetupBuilder() untuk mengatur konfigurasi item yang dapat dibeli`<br>
+
+`2. SetupBuilder() : Membuat instance ConfigurationBuilder untuk Unity Purchasing.Menambahkan item ke konfigurasi menggunakan ID dari item konsumsi (c250, c500, c1500)`<br>
+
+`3. OnInitialized() : Dipanggil ketika sistem pembelian telah berhasil diinisialisasi. Menyimpan referensi ke controller toko (isc).`<br>
+
+`4. buy10button(), buy100button(), buy500button() : Memulai pembelian untuk masing-masing item (250, 500, atau 1500 koin).`<br>
+
+`5. ProcessPurchase() : Memproses pembelian setelah berhasil: Memeriksa ID item yang dibeli, Menambahkan jumlah koin sesuai dengan item yang dibeli, Memanggil metode untuk memperbarui jumlah koin di UI.`<br>
+
+`6. _buyCoin250(), _buyCoin500(), _buyCoin1500() : Menambah jumlah koin yang dimiliki berdasarkan item yang dibeli, Menyimpan perubahan ke PlayerPrefs, Memanggil updateCoinAmount() pada SaveLoader untuk memperbarui UI.`<br>
+
+`7. OnInitializeFailed() : Menangani kegagalan inisialisasi sistem pembelian, Mencetak alasan kegagalan ke konsol.`<br>
+
+`8. OnPurchaseFailed() : Menangani kegagalan pembelian, Mencetak ID item dan alasan kegagalan ke konsol.`
+
+### Rangkuman :
+
+A. Prinsip OOP yang diterapkan:
+
+1. Encapsulation :
+   Penggunaan atribut [SerializeField] membatasi akses langsung ke variabel seperti sl, c250, dll., sehingga sesuai dengan prinsip enkapsulasi.
+2. Abstraction
+   Detail pembelian item (seperti interaksi dengan PlayerPrefs) disembunyikan di dalam class ini.
+3. Polymorphism
+   Mengimplementasikan interface IDetailedStoreListener menunjukkan penerapan polymorphism.
+
+B. Prinsip SOLID yang diterapkan :
+
+1. Single Responsibility Principle (SRP)
+   Class ini bertanggung jawab untuk mengelola pembelian di dalam game.
+   Namun, mencampur logika pembelian (seperti PlayerPrefs untuk menyimpan koin) ini melanggar SRP.
+2. Open/Closed Principle (OCP)
+   Menambahkan item baru ke toko memerlukan modifikasi kode (seperti SetupBuilder()), mungkin denganpendekatan berbasis konfigurasi dinamis untuk menambahkan produk tapi masih lumayan bisa lah.
+3. Dependency Inversion Principle (DIP)
+   Secara langsung bergantung pada PlayerPrefs dan SaveLoader. Menggunakan abstraksi atau interface dapat membantu mengurangi ketergantungan langsung.
+
 ### 3.2 Achievement System
 
 **A. Jenis Achievement**:
 
-    1. Implementasi State Management ialah berupa save data Current character selection, Active achievements, Coin balanced, dan Match history tanpa UI.
+1. Implementasi State Management ialah berupa save data Current character selection, Active achievements, Coin balanced, dan Match history tanpa UI.
 
-    2. Error Handling yang diimplementasikan ialah ketika pada mode multiplayer saat user jaringan lag di game ini terdapat bug jika salah 1 player menang dan player ke 2 lag cara menangani nya ketika user menyerang kita tambahkan Kalau sudah 1 detik langsung balikan variable ke 0 Jadi nggak terhitung kena hit pada proses penyerangan sehingga antara player yang kalah dan menang itu tetap matching bahwa yang menang mendapatkan koin 1 biji dan yang kalah 0.
+2. Error Handling yang diimplementasikan ialah ketika pada mode multiplayer saat user jaringan lag di game ini terdapat bug jika salah 1 player menang dan player ke 2 lag cara menangani nya ketika user menyerang kita tambahkan Kalau sudah 1 detik langsung balikan variable ke 0 Jadi nggak terhitung kena hit pada proses penyerangan sehingga antara player yang kalah dan menang itu tetap matching bahwa yang menang mendapatkan koin 1 biji dan yang kalah 0.
 
 **B. Konsep OOP**:
 
-    1. Encapsulation: Data seperti koin, karakter, dan hasil pertandingan disimpan dalam SaveLoader dan hanya bisa diakses melalui metode khusus.
-    2. Inheritance: Kelas SaveLoader bisa diperluas untuk menangani data tambahan.
-    3. Polymorphism: Metode serangan bisa fleksibel sesuai kondisi pemain.
-    4. Abstraction: Menyembunyikan detail implementasi sehingga mudah dipahami.
+1. Encapsulation: Data seperti koin, karakter, dan hasil pertandingan disimpan dalam SaveLoader dan hanya bisa diakses melalui metode khusus.
+2. Inheritance: Kelas SaveLoader bisa diperluas untuk menangani data tambahan.
+3. Polymorphism: Metode serangan bisa fleksibel sesuai kondisi pemain.
+4. Abstraction: Menyembunyikan detail implementasi sehingga mudah dipahami.
 
 **C. Penerapan SOLID**:
 
-    1. **SRP** : SaveLoader hanya menangani penyimpanan data, tidak ada campur aduk.
-    2. **OCP** : Bisa ditambah fungsinya tanpa ubah yang lama.
-    3. **LSP** : Kelas turunan bisa menggantikan SaveLoader tanpa masalah.
-    4. **ISP** : Bisa buat antarmuka terpisah seperti ICoinManager.
-    5. **DIP** : Dengan antarmuka, penyimpanan bisa diganti tanpa ubah kode utama.
+1. **SRP** : SaveLoader hanya menangani penyimpanan data, tidak ada campur aduk.
+2. **OCP** : Bisa ditambah fungsinya tanpa ubah yang lama.
+3. **LSP** : Kelas turunan bisa menggantikan SaveLoader tanpa masalah.
+4. **ISP** : Bisa buat antarmuka terpisah seperti ICoinManager.
+5. **DIP** : Dengan antarmuka, penyimpanan bisa diganti tanpa ubah kode utama.
 
 **D. Code Snippet**:
 
@@ -1061,6 +1285,19 @@ public class SaveLoader : MonoBehaviour
 }
 ```
 
+### Penjelasan Code :
+    
+`1. UpdateCoinAmount() : Memperbarui jumlah koin yang ditampilkan di UI berdasarkan data yang disimpan di PlayerPrefs.`
+    
+`2. AddCoins() : Menambahkan jumlah koin ke total koin yang dimiliki, Menyimpan total koin baru ke PlayerPrefs, Memperbarui tampilan jumlah koin.`
+    
+`3. SaveCharacterSelection() : Menyimpan ID karakter yang dipilih oleh pemain ke PlayerPrefs.`
+    
+`4. LoadCharacterSelection() : Memuat ID karakter yang dipilih dari PlayerPrefs, Mengembalikan ID karakter yang disimpan.`
+    
+`5. SaveMatchHistory() : Menyimpan hasil pertandingan terakhir ke PlayerPrefs.`
+
+
 ### +> 2. Error Handling :
 
 ## **2. Error Handling.cs** :
@@ -1102,25 +1339,136 @@ private void ResetAttack()
 }
 ```
 
+### Penjelasan Code : 
+
+`1. HandleAttack() : Memeriksa apakah pemain sedang lag sebelum mengeksekusi serangan, Jika pemain tidak lag, serangan dilakukan, Jika pemain lag, serangan diabaikan dan variabel terkait diatur ulang.`
+
+`2. PerformAttack() : Melakukan serangan jika pemain tidak lag, Memeriksa waktu terakhir serangan dan waktu sekarang, Jika waktu terakhir lebih dari ambang batas lag, serangan dieksekusi, Memperbarui status permainan.`
+
+`3. ResetAttack() : Mengatur ulang variabel terkait serangan jika pemain lag, Mengatur isPlayerLagging ke false.`
+
 ## 4. Implementasi Fitur Lain
 
 ### 4.1 Fitur Loading Sebelum Memasuki Lobby Game
 
-- **Implementasi**:
-- **Konsep OOP**:
-- **Penerapan SOLID (Optional)**:
-- **Code Snippet**:
+## **LoadingManager.cs** :
 
+```bash
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class LoadingManager : MonoBehaviour
+{
+    [SerializeField] Image loadFill;
+    [SerializeField] string[] words;
+    [SerializeField] TextMeshProUGUI textBox;
+    float timer;
+    int w1, w2;
+    bool changed = false;
+    int[] stutterr;
+    LinkedList<int> stutterer;
+
+
+    // Start is called before the first frame update
+    void Start()
+
+    {
+        timer = 0f;
+        w1 = Random.Range(0,9);
+        w2 = Random.Range(0,9);
+        while (w2 == w1){
+            w2 = Random.Range(0,9);
+        }
+        textBox.text = words[w1];
+
+        // int gapper = 1;
+        // stutterer.AddFirst(gapper);
+        // while (gapper < 10){
+
+        // }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        timer += Time.deltaTime;
+        // loadFill.fillAmount = timer / 10f;
+
+        if (timer >= 5 && !changed){
+            textBox.text = words[w2];
+            changed = true;
+        }
+
+        if (timer >= 0 && timer <= 2f){
+            loadFill.fillAmount = 0.2f / 10f;
+        }
+        else if (timer >= 2 && timer <= 4f){
+            loadFill.fillAmount = 2f / 10f;
+        }
+        else if (timer >= 4f && timer <= 7f){
+            loadFill.fillAmount = 4f / 10f;
+        }
+        else if (timer >= 7f && timer <= 8f){
+            loadFill.fillAmount = 7f / 10f;
+        }
+        else if (timer >= 8f && timer <= 9f){
+            loadFill.fillAmount = 8f / 10f;
+        }
+        else if (timer >= 9f){
+            loadFill.fillAmount = 9.2f / 10f;
+        }
+
+        if (timer >= 10f){
+            SceneManager.LoadScene(1);
+        }
+    }
+}
 ```
-[Code snippet here]
-```
+
+### Penjelasan Code :
+
+`1. Start() : Dipanggil saat pertama kali object aktif di game yaitu init variabel timer dengan 0 untuk mencatat waktu berlalu, lalu memilih dua indeks acak w1 dan w2 (dengan memastikan keduanya berbeda) untuk menentukan kata-kata yang ditampilkan dari array words saat loading, Menampilkan kata pertama (words[w1]) di textBox.`
+
+`2. Update() : update bar loading dengan mengubah nilai fillAmount dari loadFill (progress bar) berdasarkan nilai timer.`<br>
+
+`- Pembagian rentang waktu:`<br>
+    `0-2 detik: fillAmount 0.02 (progres awal).` <br>
+    `2-4 detik: fillAmount 0.2.`<br>
+        `4-7 detik: fillAmount 0.4.` <br>
+        `7-8 detik: fillAmount 0.7.`<br>
+        `8-9 detik: fillAmount 0.8.`<br>
+        `9-10 detik: fillAmount 0.92.`<br> <br>
+     `- Ganti Teks:` <br>
+        `Jika timer >= 5 dan teks belum berubah (changed == false), mengganti teks di textBox dengan kata kedua (words[w2]) dan menandai perubahan (changed = true).`<br>
+    `- Load Scene Baru:` <br>
+        `Jika timer >= 10, memuat scene berikutnya menggunakan SceneManager.LoadScene(1).`
+
+
+### Rangkuman :
+
+A. Prinsip OOP yang diterapkan:
+
+1. Encapsulation
+    Variabel seperti loadFill, words, dan textBox dienkapsulasi dengan [SerializeField], membatasi akses langsung dari luar class. Namun, variabel seperti timer, w1, w2, dan changed bersifat publik secara implisit.
+2. Abstraction
+    Detail seperti perubahan teks dan progress bar dikelola di dalam class, sehingga kode lain hanya perlu menggunakan class ini tanpa mengetahui isinya.
+
+
+B. Prinsip SOLID yang diterapkan :
+
+1. Single Responsibility Principle (SRP)
+    Class ini hanya bertanggung jawab untuk mengelola proses loading, seperti memperbarui progress bar dan mengganti teks.
+2. Open/Closed Principle (OCP)
+    Class ini tidak dirancang untuk diperluas tanpa memodifikasi kode. Contohnya, jika Anda ingin mengubah rentang waktu untuk progress bar, Anda perlu mengedit fungsi Update().
+3. Dependency Inversion Principle (DIP)
+    Class ini secara langsung menggunakan SceneManager, Image, dan TextMeshProUGUI. Menggunakan abstraksi untuk pengelolaan scene atau UI.
+
 
 ### 4.2 Fitur UI Untuk Regain Mana Di Dalam Match
-
-- **Implementasi**:
-- **Konsep OOP**:
-- **Penerapan SOLID (Optional)**:
-- **Code Snippet**:
 
 ### UIController.cs :
 
@@ -1145,8 +1493,8 @@ public class UIController : MonoBehaviour
     [SerializeField] Button qButton;
     [SerializeField] TextMeshProUGUI qText;
 
-    [SerializeField] Image[] g7Set; 
-    [SerializeField] Image[] g8Set; 
+    [SerializeField] Image[] g7Set;
+    [SerializeField] Image[] g8Set;
     [SerializeField] Image[] g9Set;
     [SerializeField] string[,] answers = new string[20,4];
     [SerializeField] TextMeshProUGUI[] answerText = new TextMeshProUGUI[4];
@@ -1179,7 +1527,7 @@ public class UIController : MonoBehaviour
                 answers[0,2] = "Gambar C";
                 answers[0,3] = "Gambar A & C";
                 cAnswer[0] = 3;
-                
+
                 answers[1,0] = "Lingkaran";
                 answers[1,1] = "Persegi";
                 answers[1,2] = "Persegi Panjang";
@@ -1243,7 +1591,7 @@ public class UIController : MonoBehaviour
                 answers[0,2] = "8";
                 answers[0,3] = "9";
                 cAnswer[0] = 1;
-                
+
                 answers[1,0] = "12";
                 answers[1,1] = "14";
                 answers[1,2] = "15";
@@ -1294,7 +1642,7 @@ public class UIController : MonoBehaviour
 
                 sIndex = 8;
                 break;
-            
+
             case 9:
                 answers[0,0] = "Lingkaran";
                 answers[0,1] = "Persegi Panjang";
@@ -1307,79 +1655,79 @@ public class UIController : MonoBehaviour
                 answers[1,2] = "48 cm^2";
                 answers[1,3] = "50 cm^2";
                 cAnswer[1] = 2;
-                
+
                 answers[2,0] = "30 cm";
                 answers[2,1] = "34 cm";
                 answers[2,2] = "32 cm";
                 answers[2,3] = "40 cm";
                 cAnswer[2] = 1;
-                
+
                 answers[3,0] = "2";
                 answers[3,1] = "3";
                 answers[3,2] = "4";
                 answers[3,3] = "1";
                 cAnswer[3] = 0;
-                
+
                 answers[4,0] = "24 cm^2";
                 answers[4,1] = "96 cm^2";
                 answers[4,2] = "72 cm^2";
                 answers[4,3] = "48 cm^2";
                 cAnswer[4] = 1;
-                
+
                 answers[5,0] = "40 cm";
                 answers[5,1] = "96 cm";
                 answers[5,2] = "56 cm";
                 answers[5,3] = "14 cm^2";
                 cAnswer[5] = 0;
-                
+
                 answers[6,0] = "Sudut berpelurus";
                 answers[6,1] = "Sudut siku-siku";
                 answers[6,2] = "Sudut tumpul";
                 answers[6,3] = "Sudut lancip";
                 cAnswer[6] = 3;
-                
+
                 answers[7,0] = "Setiap kotaknya ani membagi menjadi 8 bagian, sehingga 8 bagian dikali 3 kotak akan menghasilkan 24 potong, sisanya Ani";
                 answers[7,1] = "Setiap kotaknya ani membagi menjadi 7 bagian, sehingga 7 bagian dikali 3 kotak akan menghasilkan 21 bagian(potong)";
                 answers[7,2] = "Ani hanya membagi kepada teman dekatnya saja yakni 7 orang, sehingga dia membagi nya menjadi 7 bagian saja";
                 answers[7,3] = "Ani tidak suka membagikan makannaya kepada temannya, tanpa sepengetahuan ibunya, karena dia suka dengan brem";
                 cAnswer[7] = 1;
-                
+
                 answers[8,0] = "126 cm2";
                 answers[8,1] = "132 cm2";
                 answers[8,2] = "140 cm2";
                 answers[8,3] = "156 cm2";
                 cAnswer[8] = 0;
-                
+
                 answers[9,0] = "3/2 Liter ";
                 answers[9,1] = "2 Liter ";
                 answers[9,2] = "6 Liter ";
                 answers[9,3] = "27/2 Liter ";
                 cAnswer[9] = 2;
-                
+
                 answers[10,0] = "Garis Berpotongan";
                 answers[10,1] = "Garis Sejajar";
                 answers[10,2] = "Garis Berimpit";
                 answers[10,3] = "Garis Tegak Lurus";
                 cAnswer[10] = 1;
-                
+
                 answers[11,0] = "Sudut Lancip";
                 answers[11,1] = "Sudut Tumpul";
                 answers[11,2] = "Sudut Siku-siku";
                 answers[11,3] = "Sudut Berpelurus";
                 cAnswer[11] = 0;
-                
+
                 answers[12,0] = "25°";
                 answers[12,1] = "50°";
                 answers[12,2] = "75°";
                 answers[12,3] = "30°";
                 cAnswer[12] = 3;
-                
+
                 answers[13,0] = "Refleksi";
                 answers[13,1] = "Rotasi";
                 answers[13,2] = "Dilatasi";
                 answers[13,3] = "Traslasi";
                 cAnswer[13] = 0;
-                
+
                 sIndex = 9;
                 break;
 
@@ -1462,7 +1810,7 @@ public class UIController : MonoBehaviour
             case 4:
                 hlButton.interactable = true;
                 break;
-            
+
             default:
                 break;
         }
@@ -1490,12 +1838,32 @@ public class UIController : MonoBehaviour
 }
 ```
 
-### 4.3 Fitur Validasi Serangan Bot Di Mode Single Player 
+### Penjelasan Code : 
 
-- **Implementasi**:
-- **Konsep OOP**:
-- **Penerapan SOLID (Optional)**:
-- **Code Snippet**:
+`1. Start() : Untuk panggil ketika objek pertama kali diinisialisasi di dalam scene dan loader data.`
+
+`2. Update() :  dipanggil setiap frame dalam Unity. Di sini, fungsi ini mengelola cooldown untuk tombol pertanyaan (qButton) yaitu questionCD dihitung setiap frame dengan menambah waktu (Time.deltaTime), jika questionCD lebih dari 3 detik, maka tombol akan dapat diklik dan teksnya akan berubah menjadi "ANSWER QUESTION / REGAIN MANA", jika belum mencapai 3 detik, tombol akan dinonaktifkan dan teks menjadi "COOLDOWN"`
+
+`3. changeQset(int set) : Mengatur pertanyaan dan jawaban untuk set pertanyaan tingkat grade kelas yang dipilih (7, 8, atau 9).`
+
+`4. changeQuestion() : Mengubah pertanyaan yang ditampilkan di panel pertanyaan berdasarkan set pertanyaan saat ini (sIndex) secara random dan indeks pertanyaan saat ini (qIndex), Setelah memilih soal dan jawaban yang tepat, fungsi ini akan mengupdate tampilan jawaban (answerText[])`
+
+`5. answer(int choice) : Mengelola jawaban yang diberikan oleh pemain: Jika jawaban benar, panggil fungsi correctAnswer() dari GameManager, Jika jawaban salah, panggil fungsi wrongAnswer() dari GameManager dan reset questionCD.`
+
+`6. openQuestionPanel() : Menampilkan panel pertanyaan dan menyembunyikan panel opsi.`
+
+`7. closeQuestionPanel() : Menyembunyikan panel pertanyaan dan menampilkan panel opsi.`
+
+`8. offOptions() : Menyembunyikan panel opsi.`
+
+`9. setFill(float timer) : Mengatur fillAmount dari progress bar untuk setiap tombol skill berdasarkan timer.`
+
+`10. enableButton(int buttonIndex) : Mengaktifkan tombol skill berdasarkan indeks tombol.`
+
+`11. disableButton(int buttonIndex) : Menonaktifkan tombol skill berdasarkan indeks tombol.`
+
+
+### 4.3 Fitur Validasi Serangan Bot Di Mode Single Player
 
 ### SPBotController.cs :
 
@@ -1763,60 +2131,306 @@ public class SPBotController : MonoBehaviour
 }
 ```
 
+### Penjelasan Code :
+
+`1. Start() : Dipanggil sekali saat objek pertama kali diinisialisasi. Di sini, nilai HP (health points) dan MP (mana points) diatur ke nilai default. Juga memanggil set_character() untuk memilih karakter acak yang akan digunakan oleh bot.`
+
+`2. Update() : Dipanggil setiap frame. Di sini, timer antara serangan (time_between_attacks) dikurangi dengan waktu yang berlalu setiap frame (Time.deltaTime), jika waktu antar serangan mencapai 0, bot akan mencoba untuk melakukan serangan dengan memanggil roll_for_attack().`
+
+`3. update_bars() : Mengatur fillAmount dari health_bar dan mana_bar berdasarkan nilai HP dan MP saat ini. Juga menampilkan nilai HP dan MP di health_counter dan mana_counter. `
+
+`4. set_character () : Fungsi ini memilih karakter acak dari array chars (berisi 9 animator) untuk digunakan oleh bot, setelah memilih karakter, animator yang sesuai akan diaktifkan dan yang lainnya dinonaktifkan.`
+
+`5. audioSetter(int state) : mengatur status audio berdasarkan parameter state. Jika state adalah 0, audio dinonaktifkan; jika state adalah 1, audio diaktifkan.`
+
+`6. add_mana() : Untuk menambahkan 30 MP ke bot dengan memanggil change_mana().`
+
+`7. change_mana(int mana_change) : Mengubah nilai MP bot berdasarkan mana_change, memastikan nilai MP tidak melebihi 100 atau kurang dari 0. Juga menampilkan teks perubahan MP selama 1 detik.`
+
+`8. Mana_Text(int mana_change) : Menampilkan teks perubahan MP selama 1 detik.`
+
+`9. heal_spell() : Untuk menggunakan spell heal, mengurangi 40 MP dan menambahkan 30 HP ke bot. Juga memainkan efek suara heal.`
+
+`10. change_health(int health_change) : Mengubah nilai HP bot berdasarkan health_change, memastikan nilai HP tidak melebihi 100 atau kurang dari 0. Juga menampilkan teks perubahan HP selama 1 detik.`
+
+`11. Health_Text(int health_change) : Menampilkan teks perubahan HP selama 1 detik.`
+
+`12. roll_for_timer() : Menggulirkan dadu d20 untuk menentukan waktu antara serangan berikutnya, nilai yang lebih rendah mengatur interval waktu lebih lama, sementara nilai lebih tinggi mengurangi waktu antar serangan.`
+
+`13. shield_trigger() : Menghentikan timer serangan dan memulai shield_routine().`
+
+`14. shield_routine() : Menampilkan efek shield selama 5 detik, kemudian menggulirkan dadu d20 untuk menentukan waktu serangan berikutnya.`
+
+`15. lightning_trigger() : Mengurangi 60 MP dan memulai lightning_routine_p1().`
+
+`16. lightning_routine_p1(int p) : Memainkan animasi casting dan efek suara lightning, kemudian memanggil lightning_call() dari GameManager.`
+
+`17. fireball_trigger() : Mengurangi 30 MP dan memulai fireball_routine().`
+
+`18. fireball_routine() : Memainkan animasi casting dan efek suara fireball, kemudian memanggil summon_fireball().`
+
+`19. summon_fireball() : Membuat instance fireball di spell_origin dan memberikan dorongan ke arah yang berlawanan.`
+
+`20. OnCollisionEnter2D(Collision2D other) : Ketika bot bertabrakan dengan fireball, mengurangi 30 HP.`
+
+`21. roll_for_attack() : Menggulirkan dadu d20 untuk menentukan serangan apa yang akan dilakukan bot berdasarkan kondisi MP dan HP saat ini.`
+
+
+## 4.4 Fitur Pencarian MatchMaking Di Mode Multiplayer
+
+### SimpleMatchMaking.cs :
+
+```bash
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Unity.Netcode;
+using Unity.Netcode.Transports.UTP;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
+using Unity.Services.Lobbies;
+using Unity.Services.Lobbies.Models;
+using Unity.Services.Relay;
+using Unity.Services.Relay.Models;
+using UnityEngine;
+
+#if UNITY_EDITOR
+using ParrelSync;
+#endif
+
+public class SimpleMatchmaking : MonoBehaviour
+{
+    [SerializeField] private GameObject _buttons;
+    [SerializeField] private GameObject _panel;
+    [SerializeField] private GameObject _waitingText;
+
+    private Lobby _connectedLobby;
+    private QueryResponse _lobbies;
+    private UnityTransport _transport;
+    private string JoinCodeKey = "j";
+    private string _playerId;
+
+    private void Awake() => _transport = FindObjectOfType<UnityTransport>();
+
+    public void gradeSelect(int grade){
+        JoinCodeKey = grade.ToString();
+        CreateOrJoinLobby();
+    }
+
+    public async void CreateOrJoinLobby()
+    {
+        await Authenticate();
+
+        _connectedLobby = await QuickJoinLobby() ?? await CreateLobby();
+
+        if (_connectedLobby != null)
+        {
+            _buttons.SetActive(false);
+            //_waitingText.SetActive(true);
+        }
+    }
+
+    private async Task Authenticate()
+    {
+        var options = new InitializationOptions();
+
+#if UNITY_EDITOR
+        // Remove this if you don't have ParrelSync installed.
+        // It's used to differentiate the clients, otherwise lobby will count them as the same
+        options.SetProfile(ClonesManager.IsClone() ? ClonesManager.GetArgument() : "Primary");
+#endif
+
+        await UnityServices.InitializeAsync(options);
+
+        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        _playerId = AuthenticationService.Instance.PlayerId;
+    }
+
+    private async Task<Lobby> QuickJoinLobby()
+    {
+        try
+        {
+            // Attempt to join a lobby in progress
+            var lobby = await Lobbies.Instance.QuickJoinLobbyAsync();
+
+            // If we found one, grab the relay allocation details
+            var a = await RelayService.Instance.JoinAllocationAsync(lobby.Data[JoinCodeKey].Value);
+
+            // Set the details to the transform
+            SetTransformAsClient(a);
+
+            // Join the game room as a client
+            NetworkManager.Singleton.StartClient();
+            return lobby;
+        }
+        catch (Exception e)
+        {
+            Debug.Log($"No lobbies available via quick join");
+            return null;
+        }
+    }
+
+    private async Task<Lobby> CreateLobby()
+    {
+        try
+        {
+            const int maxPlayers = 2;
+
+            // Create a relay allocation and generate a join code to share with the lobby
+            var a = await RelayService.Instance.CreateAllocationAsync(maxPlayers);
+            var joinCode = await RelayService.Instance.GetJoinCodeAsync(a.AllocationId);
+
+            // Create a lobby, adding the relay join code to the lobby data
+            var options = new CreateLobbyOptions
+            {
+                Data = new Dictionary<string, DataObject> { { JoinCodeKey, new DataObject(DataObject.VisibilityOptions.Public, joinCode) } }
+            };
+            var lobby = await Lobbies.Instance.CreateLobbyAsync("Useless Lobby Name", maxPlayers, options);
+
+            // Send a heartbeat every 15 seconds to keep the room alive
+            StartCoroutine(HeartbeatLobbyCoroutine(lobby.Id, 15));
+
+            // Set the game room to use the relay allocation
+            _transport.SetHostRelayData(a.RelayServer.IpV4, (ushort)a.RelayServer.Port, a.AllocationIdBytes, a.Key, a.ConnectionData);
+
+            // Start the room. I'm doing this immediately, but maybe you want to wait for the lobby to fill up
+            NetworkManager.Singleton.StartHost();
+            return lobby;
+        }
+        catch (Exception e)
+        {
+            Debug.LogFormat("Failed creating a lobby");
+            return null;
+        }
+    }
+
+    private void SetTransformAsClient(JoinAllocation a)
+    {
+        _transport.SetClientRelayData(a.RelayServer.IpV4, (ushort)a.RelayServer.Port, a.AllocationIdBytes, a.Key, a.ConnectionData, a.HostConnectionData);
+    }
+
+    private static IEnumerator HeartbeatLobbyCoroutine(string lobbyId, float waitTimeSeconds)
+    {
+        var delay = new WaitForSecondsRealtime(waitTimeSeconds);
+        while (true)
+        {
+            Lobbies.Instance.SendHeartbeatPingAsync(lobbyId);
+            yield return delay;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        try
+        {
+            StopAllCoroutines();
+            // todo: Add a check to see if you're host
+            if (_connectedLobby != null)
+            {
+                if (_connectedLobby.HostId == _playerId) Lobbies.Instance.DeleteLobbyAsync(_connectedLobby.Id);
+                else Lobbies.Instance.RemovePlayerAsync(_connectedLobby.Id, _playerId);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log($"Error shutting down lobby: {e}");
+        }
+    }
+}
+```
+
+### Penjelasan Code :
+
+`1. Awake() : Dipanggil saat objek pertama kali diinisialisasi. Di sini, mencari UnityTransport di scene.`
+
+`2. gradeSelect(int grade) : Mengatur JoinCodeKey berdasarkan grade yang dipilih dan memanggil CreateOrJoinLobby().`
+
+`3. CreateOrJoinLobby() : Memanggil Authenticate(), kemudian mencoba untuk melakukan QuickJoinLobby(), jika gagal, maka CreateLobby() akan dipanggil.`
+
+`4. Authenticate() : Menginisialisasi UnityServices, melakukan sign-in anonim, dan mendapatkan PlayerId.`
+
+`5. QuickJoinLobby() : Mencoba untuk bergabung dengan lobby yang sedang berlangsung, jika berhasil, mendapatkan detail relay allocation dan memanggil SetTransformAsClient().`
+
+`6. CreateLobby() : Membuat relay allocation, mendapatkan join code, membuat lobby, mengatur relay allocation untuk game room, dan memulai game room sebagai host.`
+
+`7. SetTransformAsClient(JoinAllocation a) : Mengatur relay data untuk client berdasarkan detail relay allocation.`
+
+`8. HeartbeatLobbyCoroutine(string lobbyId, float wait TimeSeconds) : Mengirimkan heartbeat ping ke lobby secara berkala.`
+
+`9. OnDestroy() : Dipanggil saat objek dihancurkan, mencoba untuk menghapus lobby atau mengeluarkan pemain dari lobby.`
 
 
 ## 5. Screenshot dan Demo
 
 ### A. Inisialisasi Project Di Unity Menggunakan Tools Untuk Game Dua Dimensi
+
 ![images](/assets/images/7.jpg)
 
 ### B. Pengujian Awal PvP (Player versus Player) dan PvE (Player versus environment) Di Dalam GameManager
+
 ![images](/assets/images/1.jpg)
 
 ### C. Farming Assets Dari Itch.io
+
 ![images](/assets/images/3.jpg)
 
 ### D. Pemilihan Tombol Serangan Dan Bertahan Ketika Di Dalam Match Game
+
 ![images](/assets/images/4.jpg)
 
 ### E. Pengujian Serangan Dari Player 1 Ke Player 2 Dengan Defend Dan Bertahan Hingga Salah Satu Player Menang
+
 ![images](/assets/images/2.jpg)
 
 ### F. Pengujian Tombol Quick Match Untuk Membuat Player1 Sebagai Host Server Dan Player2 Sebagai Client
+
 ![images](/assets/images/8.jpg)
 
 ### G. Memasukan Assets Semua 9 karakter Ke Dalam Game
+
 ![images](/assets/images/10.jpg)
 
 ### H. Pembuatan Jurus Serangan Bola Api Menggunakan Vector 2D Dan Rigidbody 2D
+
 ![images](/assets/images/5.jpg)
 
-### I. Pembuatan UI Lobby hingga Tombol Shop Untuk Membeli Koin Dengan Uang Asli Melalui Google Play 
+### I. Pembuatan UI Lobby hingga Tombol Shop Untuk Membeli Koin Dengan Uang Asli Melalui Google Play
 
 #### NB : kalau di setting versi uji coba tidak perlu memasukan uang asli sudah bisa Membeli Koin dari Google Playnya atau jika mendownload dari GDrive bisa langsung membeli koinnya
+
 ![images](/assets/images/11.jpg)
 
 ### J. Testing Mode Single Player Untuk Memastikan Bot/komputer Berjalan Dengan Baik
+
 ![images](/assets/images/12.jpg)
 
 ### K. Pembuatan Soal Matematika Sebagai Regain Mana
+
 ![images](/assets/images/13.jpg)
 
 ### L. Penataan Layer Dua Dimensi Untuk Memastikan Z-Index Dari Setiap Objek Sudah Benar
+
 ![images](/assets/images/6.jpg)
 
 ### M. Pengujian Multiplayer Dari Player 1 Dan Player 2 Menggunakan Github Pararel Sync Sebagai Server
+
 ![images](/assets/images/14.jpg)
 
 ### N. Testing LoadSystem Jika Player Berhasil Memenangkan Pertandingan Dan Mendapatkan Koin 1
 
 ![alt text](/assets/images/15.jpg)
 
-### O. Visualisasi Integrasi Tombol 
+### O. Visualisasi Integrasi Tombol
 
-![alt text](/assets/images/image.png)
+![alt text](/assets/images/16.jpg)
+
+### P. Build Game Dengan Gradle Android
+
+![alt text](/assets/images/17.jpg)
 
 - **Link Demo Video**:
+
   ### [Demo Youtube : Klik Disini !](https://www.youtube.com/watch?v=J1j7jJt1J8Q)
 
 ## 6. Panduan Instalasi dan Menjalankan Game
@@ -1859,28 +2473,49 @@ public class SPBotController : MonoBehaviour
 
 ### B. **Opsi 2** : "Dapat dijalankan di Android"
 
-#### 1. Download APK di link berikut :  
-[Download .AAB Di Play Store](https://play.google.com/store/apps/details?id=com.weapmath.weapmath) 
+### 1. Download APK di link berikut :
 
-    >> Versi Ini Bisa Membeli Koin Dengan Uang Asli 
+- Versi Ini Bisa Membeli Koin Dengan Uang Asli :
+[Download .AAB Di Play Store](https://play.google.com/store/apps/details?id=com.weapmath.weapmath)
 
-#### 2. Download APK di link berikut :   
+
+### 2. Download APK di link berikut :
+
+- Versi Ini Bisa Membeli Koin Tanpa Uang Asli :
 [Download .APK Di GDrive](https://drive.google.com) 
-
-    >> Versi Ini Bisa Membeli Koin Tanpa Uang Asli
 
 #### NB :
 
-**Kenapa ada 2 versi?** "Versi pertama" dapat membeli koin dengan uang asli karena dihubungkan dengan API Unity melalui Google Play di .gradle-nya, sedangkan "Versi kedua" tidak terkait karena dari link eksternal atau direktori sendiri jadi .gradle tidak terhubung dengan API Unity yang akan diteruskan ke Google Play Store.
+**Kenapa ada 2 versi?** 
+"Versi pertama" dapat membeli koin dengan uang asli karena dihubungkan dengan API Unity melalui Google Play di .gradle-nya, sedangkan "Versi kedua" tidak terkait karena dari link eksternal atau direktori sendiri jadi .gradle tidak terhubung dengan API Unity yang nantinya akan diteruskan ke Google Play Store.
 
 ## 7. Kendala dan Solusi
 
 1. **Kendala 1**:
-   - Solusi:
+
+   - Kesulitan menangani multiplayernya karena harus menghubungkan ke server dan mengatur waktu untuk menghindari lag.
+
 2. **Kendala 2**:
-   - Solusi:
+   - Solusi: Membuat sistem yang dapat mengatur waktu dan menangani error handling saat terjadi lag dengan jeda 1 detik, tapi mungkin tidak sesempurna itu karena tergantung koneksi internet juga.
 
 ## 8. Kesimpulan dan Pembelajaran
 
 - **Kesimpulan**:
+
+  Dapat disimpulkan bahwa game ini merupakan game yang dapat dimainkan secara online dan offline dengan fitur multiplayernya yang dapat diakses melalui server lokal atau server eksternal. Game ini juga memiliki fitur pembelian koin dengan uang asli melalui Google Play Store dan fitur regen mana dengan menjawab soal matematika. Game ini juga memiliki fitur error handling yang baik untuk mengatasi lag saat bermain walaupun tidak sesempurna itu.
+
 - **Pembelajaran**:
+
+  Pembelajaran yang didapat dari pembuatan game ini adalah bagaimana cara membuat game yang dapat dimainkan secara online dan offline, bagaimana cara menghubungkan game ke server lokal atau server eksternal, bagaimana cara membuat fitur pembelian koin dengan uang asli melalui Google Play Store, dan bagaimana cara membuat fitur regen mana dengan menjawab soal matematika dengan sesuatu yang sangat kompleks, yang paling mengesankan adalah bagaimana berintergrasi dengan API Unity dan Google Play Store.
+
+## 9. Referensi Game
+
+### A. [Klik Disini : Marbel Gim Belajar Budaya](https://play.google.com/store/apps/details?id=com.educastudio.marbelbudayanusantara&hl=id)
+
+### B. [Klik Disini : Cerdas Cermat SMP](https://play.google.com/store/apps/details?id=com.solitekids.cerdascermatsmp&hl=id)
+
+## 10. Source Code
+
+**Untuk Source Code Project Game Weapmath Ini Dapat Dilihat Di Link Github Berikut Ini :**
+
+### [Klik Disini : alvinzanuaputragithub-finalpro-pbo-c#](https://github.com/alvinzanuaputra/finalpro-pbo-Csharp)
