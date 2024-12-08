@@ -2510,12 +2510,12 @@ public class SimpleMatchmaking : MonoBehaviour
 
 ## 9. Referensi Game
 
-### A. [Klik Disini : Marbel Gim Belajar Budaya](https://play.google.com/store/apps/details?id=com.educastudio.marbelbudayanusantara&hl=id)
+#### A. [Klik Disini : Marbel Gim Belajar Budaya](https://play.google.com/store/apps/details?id=com.educastudio.marbelbudayanusantara&hl=id)
 
-### B. [Klik Disini : Cerdas Cermat SMP](https://play.google.com/store/apps/details?id=com.solitekids.cerdascermatsmp&hl=id)
+#### B. [Klik Disini : Cerdas Cermat SMP](https://play.google.com/store/apps/details?id=com.solitekids.cerdascermatsmp&hl=id)
 
 ## 10. Source Code
 
 **Untuk Source Code Project Game Weapmath Ini Dapat Dilihat Di Link Github Berikut Ini :**
 
-### [Klik Disini : alvinzanuaputragithub-finalpro-pbo-c#](https://github.com/alvinzanuaputra/finalpro-pbo-Csharp)
+#### [Klik Disini : alvinzanuaputragithub-finalpro-pbo-c#](https://github.com/alvinzanuaputra/finalpro-pbo-Csharp)
