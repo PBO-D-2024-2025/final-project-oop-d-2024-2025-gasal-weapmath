@@ -2449,24 +2449,23 @@ public class SimpleMatchmaking : MonoBehaviour
 
 ![alt text](/assets/images/22.jpg)
 
-
+https://github.com/user-attachments/assets/d4e60c96-9d25-4177-8a91-d2df66b331b5
 
 ### V. Preview Ke-9 Karakter WeapMath
 
-| ![alt text](/assets/src/char1.gif) | ![alt text](/assets/src/char2.gif) | ![alt text](/assets/src/char3.gif) | ![alt text](/assets/src/char4.gif) | ![alt text](/assets/src/char5.gif) | ![alt text](/assets/src/char6.gif) | ![alt text](/assets/src/char7.gif) | ![alt text](/assets/src/char8.gif) | ![alt text](/assets/src/char9.gif) |
-|------------------------------------|------------------------------------|------------------------------------|------------------------------------|------------------------------------|------------------------------------|------------------------------------|------------------------------------|------------------------------------|
+| ![alt text](/assets/src/char1.gif) | ![alt text](/assets/src/char2.gif) | ![alt text](/assets/src/char3.gif) |
+|------------------------------------|------------------------------------|------------------------------------|
+| ![alt text](/assets/src/char4.gif) | ![alt text](/assets/src/char5.gif) | ![alt text](/assets/src/char6.gif) |
+| ![alt text](/assets/src/char7.gif) | ![alt text](/assets/src/char8.gif) | ![alt text](/assets/src/char9.gif) |
 
 
-
-
-<hr>
 
 <br>
 
 
 - **Link Demo Video**:
 
-  ### [Demo Youtube : Klik Disini !](https://www.youtube.com/watch?v=J1j7jJt1J8Q)
+  ### [Demo Youtube : Klik Disini !](https://www.youtube.com/@alvinzanuaputra/videos/)
 
 ## 6. Panduan Instalasi dan Menjalankan Game
 
