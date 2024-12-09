@@ -2449,14 +2449,13 @@ public class SimpleMatchmaking : MonoBehaviour
 
 ![alt text](/assets/images/22.jpg)
 
-<video controls src="WhatsApp Video 2024-12-09 at 15.39.42_37f5098e.mp4" title="Title"></video>
+
 
 ### V. Preview Ke-9 Karakter WeapMath
 
-| ![alt text](/assets/src/char1.gif) | ![alt text](/assets/src/char2.gif) | ![alt text](/assets/src/char3.gif) |
-|------------------------------------|------------------------------------|------------------------------------|
-| ![alt text](/assets/src/char4.gif) | ![alt text](/assets/src/char5.gif) | ![alt text](/assets/src/char6.gif) |
-| ![alt text](/assets/src/char7.gif) | ![alt text](/assets/src/char8.gif) | ![alt text](/assets/src/char9.gif) |
+| ![alt text](/assets/src/char1.gif) | ![alt text](/assets/src/char2.gif) | ![alt text](/assets/src/char3.gif) | ![alt text](/assets/src/char4.gif) | ![alt text](/assets/src/char5.gif) | ![alt text](/assets/src/char6.gif) | ![alt text](/assets/src/char7.gif) | ![alt text](/assets/src/char8.gif) | ![alt text](/assets/src/char9.gif) |
+|------------------------------------|------------------------------------|------------------------------------|------------------------------------|------------------------------------|------------------------------------|------------------------------------|------------------------------------|------------------------------------|
+
 
 
 
