@@ -2465,11 +2465,11 @@ https://github.com/user-attachments/assets/d4e60c96-9d25-4177-8a91-d2df66b331b5
 
 - **Link Demo Video**:
 
-### [Demo Youtube : Klik Disini !](https://www.youtube.com/@alvinzanuaputra/videos/)
+## Demo Youtube :
 
-- [Part 1](https://youtu.be/OFidW1Qtl8A)
+### - [Klik Disini : Part 1](https://youtu.be/OFidW1Qtl8A)
   
-- [Part 2](https://youtu.be/AQ2bvv_KlFA)
+### - [Klik Disini : Part 2](https://youtu.be/AQ2bvv_KlFA)
 
 ## 6. Panduan Instalasi dan Menjalankan Game
 
