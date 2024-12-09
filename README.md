@@ -2449,27 +2449,15 @@ public class SimpleMatchmaking : MonoBehaviour
 
 ![alt text](/assets/images/22.jpg)
 
-<video width="100%" height="100%" controls>
-  <source src="./assets/video/p.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
+<video controls src="WhatsApp Video 2024-12-09 at 15.39.42_37f5098e.mp4" title="Title"></video>
 
 ### V. Preview Ke-9 Karakter WeapMath
 
-<br>
+| ![alt text](/assets/src/char1.gif) | ![alt text](/assets/src/char2.gif) | ![alt text](/assets/src/char3.gif) |
+|------------------------------------|------------------------------------|------------------------------------|
+| ![alt text](/assets/src/char4.gif) | ![alt text](/assets/src/char5.gif) | ![alt text](/assets/src/char6.gif) |
+| ![alt text](/assets/src/char7.gif) | ![alt text](/assets/src/char8.gif) | ![alt text](/assets/src/char9.gif) |
 
-<div style="display: grid; grid-template-columns: repeat(9, 1fr); gap: 10px;">
-  <img src="./assets/src/char1.gif" alt="Character 1">
-  <img src="./assets/src/char2.gif" alt="Character 2">
-  <img src="./assets/src/char3.gif" alt="Character 3">
-  <img src="./assets/src/char4.gif" alt="Character 4">
-  <img src="./assets/src/char5.gif" alt="Character 5">
-  <img src="./assets/src/char6.gif" alt="Character 6">
-  <img src="./assets/src/char7.gif" alt="Character 7">
-  <img src="./assets/src/char8.gif" alt="Character 8">
-  <img src="./assets/src/char9.gif" alt="Character 9">
-</div>
 
 
 <hr>
@@ -2573,6 +2561,6 @@ public class SimpleMatchmaking : MonoBehaviour
 <br>
 
 <div align="center">
-<h1>Sekian Terima Banyak Atas Ilmu Yang Diberikan Kepada <br>
-   Pak Bintang, Pak Nafkhan, dan Mas Ovaldo</h1>
+<h3>Sekian Terima Banyak Atas Ilmu Yang Diberikan Kepada <br>
+   Pak Bintang, Pak Nafkhan, dan Mas Ovaldo</h3>
 </div>
