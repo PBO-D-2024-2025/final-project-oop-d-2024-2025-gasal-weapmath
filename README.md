@@ -2425,9 +2425,57 @@ public class SimpleMatchmaking : MonoBehaviour
 
 ![alt text](/assets/images/16.jpg)
 
-### P. Build Game Dengan Gradle Android
+### P. Pembuatan Scene Loading
+
+![alt text](/assets/images/18.jpg)
+
+### Q. Build Game Dengan Gradle Android
 
 ![alt text](/assets/images/17.jpg)
+
+### R. Configurasi API Level 34 Agar Support Android 12 Ke Atas
+
+![alt text](/assets/images/19.jpg)
+
+### S. Setting Activate App In Purchase
+
+![alt text](/assets/images/21.jpg)
+
+### T. App In Purchase Untuk Membeli Koin Dengan Uang Asli
+
+![alt text](/assets/images/20.jpg)
+
+### U. Testing Pembelian Dengan Uji Coba Disini Tertera "zanualvin06@gmail.com" Sebagai Tester
+
+![alt text](/assets/images/22.jpg)
+
+<video width="100%" height="100%" controls>
+  <source src="./assets/video/p.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+### V. Preview Ke-9 Karakter WeapMath
+
+<br>
+
+<div style="display: grid; grid-template-columns: repeat(9, 1fr); gap: 10px;">
+  <img src="./assets/src/char1.gif" alt="Character 1">
+  <img src="./assets/src/char2.gif" alt="Character 2">
+  <img src="./assets/src/char3.gif" alt="Character 3">
+  <img src="./assets/src/char4.gif" alt="Character 4">
+  <img src="./assets/src/char5.gif" alt="Character 5">
+  <img src="./assets/src/char6.gif" alt="Character 6">
+  <img src="./assets/src/char7.gif" alt="Character 7">
+  <img src="./assets/src/char8.gif" alt="Character 8">
+  <img src="./assets/src/char9.gif" alt="Character 9">
+</div>
+
+
+<hr>
+
+<br>
+
 
 - **Link Demo Video**:
 
@@ -2446,9 +2494,9 @@ public class SimpleMatchmaking : MonoBehaviour
 
    - Clone repository ini
 
-     ```bash
-     https://github.com/alvinzanuaputra/finalpro-pbo-Csharp.git
-     ```
+        ```bash
+        https://github.com/alvinzanuaputra/finalpro-pbo-Csharp.git
+        ```
 
    - Buka Unity Hub
    - Install Unity Editor versi "2022.3.30f1"
@@ -2481,8 +2529,8 @@ public class SimpleMatchmaking : MonoBehaviour
 
 ### 2. Download APK di link berikut :
 
-- Versi Ini Bisa Membeli Koin Tanpa Uang Asli :
-[Download .APK Di GDrive](https://drive.google.com) 
+- Versi Ini Bisa Membeli Koin Akan Terjadi Error : 
+[Download .APK Di GDrive](https://drive.google.com/uc?export=download&id=1XRM31Xyy8xYd6-0C0g-d7BTRf93XSsr4) 
 
 #### NB :
 
@@ -2519,3 +2567,12 @@ public class SimpleMatchmaking : MonoBehaviour
 **Untuk Source Code Project Game Weapmath Ini Dapat Dilihat Di Link Github Berikut Ini :**
 
 #### [Klik Disini : alvinzanuaputragithub-finalpro-pbo-c#](https://github.com/alvinzanuaputra/finalpro-pbo-Csharp)
+
+<br>
+<br>
+<br>
+
+<div align="center">
+<h1>Sekian Terima Banyak Atas Ilmu Yang Diberikan Kepada <br>
+   Pak Bintang, Pak Nafkhan, dan Mas Ovaldo</h1>
+</div>
