@@ -2468,8 +2468,8 @@ public class SimpleMatchmaking : MonoBehaviour
         https://github.com/VeriorPies/ParrelSync.git?path=/ParrelSync
         ```
 
-   6. Kemudian Klik Add dan Tunggu hingga selesai lalu klik update.
-   7. Close Tab lalu tekan tombol Pararel Sync di atas, tekan package manager, lalu klik open in new editor.
+     6. Kemudian Klik Add dan Tunggu hingga selesai lalu klik update.
+     7. Close Tab lalu tekan tombol Pararel Sync di atas, tekan package manager, lalu klik open in new editor.
 
 ### B. **Opsi 2** : "Dapat dijalankan di Android"
 
