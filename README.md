@@ -21,19 +21,21 @@ C. **Tech Stack**:
 ## 2.1 Konsep Game
 
 **Genre** : Educational Game Battle dengan tema Budaya Indonesia
+
 **Gameplay/Rule**:
 
 Game bertemakan perang adat yang menggabungkan unsur matematika dan budaya Indonesia. Pemain dapat memilih karakter dengan pakaian adat dari berbagai daerah. Setiap pertarungan melibatkan pemecahan soal matematika. Tingkat kesulitan soal disesuaikan dengan level kelas pemain (SMP).
 
 - **Objective** :
 
-  Mengalahkan lawan dengan menjawab soal matematika dengan benar
-  Mengumpulkan koin untuk membuka karakter dan rumah adat baru
-  Mempelajari budaya Indonesia melalui visualisasi karakter dan bangunan adat hingga soal matematika
+  - Mengalahkan lawan dengan menjawab soal matematika dengan benar
+  - Mengumpulkan koin untuk membuka karakter dan rumah adat baru
+  - Mempelajari budaya Indonesia melalui visualisasi karakter dan bangunan adat hingga soal matematika
 
 - **Single/Multi Player** :
 
   - Single Player: Melawan Bot komputer yang di program sendiri
+  - 
   - Multi Player: Pertarungan 1 vs 1 secara online
 
 ## 2.2 Fitur Utama
